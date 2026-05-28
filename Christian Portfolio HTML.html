@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Creative & Digital Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --ink: #1A1410;
+    --accent: #C8472A;
+    --gold: #D4A847;
+    --sage: #4A6741;
+    --muted: #7A6E64;
+    --card-bg: #FDFAF4;
+    --border: #E0D8CC;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em;
+    color: var(--ink); text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; font-weight: 400;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.6rem 1.4rem; border: 1px solid var(--ink);
+    color: var(--ink); text-decoration: none; font-weight: 500;
+    transition: all 0.25s;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--cream); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    padding: 6rem 4rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+  }
+
+  .hero-tag {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1.5rem; font-weight: 500;
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 1.0; font-weight: 900;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name em {
+    display: block; font-style: italic; font-weight: 400;
+    color: var(--muted); font-size: 0.75em;
+  }
+
+  .hero-desc {
+    font-size: 1rem; line-height: 1.8; color: var(--muted);
+    max-width: 420px; margin-bottom: 3rem;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; align-items: center; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--accent); color: #fff;
+    padding: 0.9rem 2rem; font-size: 0.82rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; font-weight: 500;
+    transition: all 0.25s;
+  }
+  .btn-primary:hover { background: #a33520; transform: translateY(-1px); }
+
+  .btn-ghost {
+    font-size: 0.82rem; letter-spacing: 0.08em;
+    color: var(--muted); text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.25s; font-weight: 400;
+  }
+  .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 4rem;
+    padding-top: 2rem; border-top: 0.5px solid var(--border);
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 700; line-height: 1;
+    color: var(--ink);
+  }
+  .stat-label {
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); margin-top: 0.3rem;
+  }
+
+  /* hero right */
+  .hero-right {
+    background: var(--ink);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .hero-visual {
+    position: relative; width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .hero-circle {
+    width: 340px; height: 340px; border-radius: 50%;
+    background: rgba(200, 71, 42, 0.15);
+    position: absolute;
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  .hero-circle-2 {
+    width: 240px; height: 240px;
+    background: rgba(212, 168, 71, 0.12);
+    animation-delay: 1.5s;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  .hero-center-text {
+    position: relative; z-index: 2; text-align: center;
+  }
+
+  .hero-icon-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; position: relative; z-index: 3;
+  }
+
+  .hero-skill-cell {
+    padding: 2.5rem 2rem; text-align: center;
+    border: 0.5px solid rgba(255,255,255,0.08);
+    transition: background 0.3s;
+  }
+  .hero-skill-cell:hover { background: rgba(255,255,255,0.05); }
+
+  .hero-skill-icon {
+    font-size: 2rem; margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .hero-skill-name {
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); font-weight: 400;
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 7rem 4rem; }
+
+  .section-tag {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1rem; font-weight: 500;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.1; font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1rem; color: var(--muted); line-height: 1.7;
+    max-width: 520px; margin-bottom: 3rem;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--card-bg); }
+
+  .services-header {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: end; margin-bottom: 4rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .service-card {
+    background: var(--card-bg);
+    padding: 2.5rem 2rem;
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { background: #fff; }
+
+  .service-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; font-weight: 900; color: var(--border);
+    line-height: 1; margin-bottom: 1.5rem;
+    transition: color 0.3s;
+  }
+  .service-card:hover .service-num { color: rgba(200,71,42,0.15); }
+
+  .service-title {
+    font-size: 1.05rem; font-weight: 500; margin-bottom: 0.8rem;
+    letter-spacing: -0.01em;
+  }
+
+  .service-desc {
+    font-size: 0.88rem; color: var(--muted); line-height: 1.7;
+  }
+
+  .service-tags {
+    display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.2rem;
+  }
+
+  .tag {
+    font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.25rem 0.7rem; background: var(--cream);
+    color: var(--muted); border: 0.5px solid var(--border);
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: 6rem; align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-photo-frame {
+    width: 100%; padding-bottom: 120%;
+    background: var(--ink);
+    position: relative; overflow: hidden;
+  }
+
+  .about-photo-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(200,71,42,0.3) 0%, transparent 60%);
+  }
+
+  .about-badge {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    background: var(--gold); color: var(--ink);
+    padding: 1.5rem; width: 130px; height: 130px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+  }
+
+  .about-badge-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 900; line-height: 1;
+  }
+  .about-badge-text {
+    font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: 500; margin-top: 0.3rem; line-height: 1.3;
+  }
+
+  .about-content { padding-right: 2rem; }
+
+  .about-list {
+    list-style: none; margin: 2rem 0;
+  }
+  .about-list li {
+    padding: 0.9rem 0; border-bottom: 0.5px solid var(--border);
+    display: flex; align-items: center; gap: 0.8rem;
+    font-size: 0.9rem; color: var(--muted);
+  }
+  .about-list li::before {
+    content: '→'; color: var(--accent); font-size: 0.8rem;
+  }
+
+  /* ── PROCESS ── */
+  #process { background: var(--ink); color: var(--cream); }
+
+  #process .section-title { color: var(--cream); }
+  #process .section-sub { color: rgba(245,240,232,0.55); }
+  #process .section-tag { color: var(--gold); }
+
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; margin-top: 4rem;
+    border-top: 0.5px solid rgba(255,255,255,0.1);
+  }
+
+  .process-step {
+    padding: 3rem 2rem 2rem;
+    border-right: 0.5px solid rgba(255,255,255,0.08);
+    position: relative;
+  }
+  .process-step:last-child { border-right: none; }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; font-weight: 900;
+    color: rgba(255,255,255,0.05); line-height: 1;
+    position: absolute; top: 1rem; right: 1rem;
+  }
+
+  .step-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); margin-bottom: 1.5rem;
+  }
+
+  .step-title {
+    font-size: 1rem; font-weight: 500; margin-bottom: 0.8rem;
+    color: var(--cream);
+  }
+
+  .step-desc {
+    font-size: 0.85rem; color: rgba(245,240,232,0.5); line-height: 1.7;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--card-bg); }
+
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+
+  .testimonial-card {
+    background: var(--card-bg);
+    padding: 2.5rem 2rem;
+    transition: background 0.3s;
+  }
+  .testimonial-card:hover { background: #fff; }
+
+  .testimonial-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; color: var(--accent); line-height: 0.5;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-text {
+    font-size: 0.92rem; color: var(--muted); line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-author {
+    display: flex; align-items: center; gap: 0.8rem;
+    border-top: 0.5px solid var(--border); padding-top: 1.2rem;
+  }
+
+  .author-avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em;
+  }
+
+  .author-name { font-size: 0.85rem; font-weight: 500; }
+  .author-role { font-size: 0.75rem; color: var(--muted); }
+
+  /* ── CONTACT ── */
+  #contact {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0; min-height: 60vh;
+  }
+
+  .contact-left {
+    background: var(--ink); color: var(--cream);
+    padding: 7rem 5rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+
+  .contact-left .section-tag { color: var(--gold); }
+  .contact-left .section-title { color: var(--cream); margin-bottom: 2rem; }
+
+  .contact-info { margin-top: 3rem; }
+  .contact-line {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.2rem 0; border-bottom: 0.5px solid rgba(255,255,255,0.1);
+    text-decoration: none; color: rgba(245,240,232,0.7);
+    font-size: 0.9rem; transition: color 0.25s;
+  }
+  .contact-line:hover { color: var(--cream); }
+  .contact-line-icon { color: var(--accent); font-size: 1.1rem; }
+
+  .contact-right {
+    background: var(--cream);
+    padding: 7rem 5rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+
+  .form-group { margin-bottom: 1.5rem; }
+
+  .form-label {
+    display: block; font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 0.5rem; font-weight: 500;
+  }
+
+  .form-input, .form-textarea {
+    width: 100%; padding: 0.9rem 1rem;
+    background: transparent; border: 0.5px solid var(--border);
+    color: var(--ink); font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; font-weight: 300;
+    transition: border-color 0.25s; outline: none;
+  }
+  .form-input:focus, .form-textarea:focus {
+    border-color: var(--ink);
+  }
+  .form-textarea { resize: none; height: 120px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); color: rgba(245,240,232,0.4);
+    padding: 2rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+    font-size: 0.78rem; letter-spacing: 0.06em;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--cream); font-size: 1rem; font-weight: 700;
+    text-decoration: none;
+  }
+
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a {
+    color: rgba(245,240,232,0.4); text-decoration: none;
+    transition: color 0.25s;
+  }
+  .footer-links a:hover { color: var(--cream); }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.35s; }
+  .delay-4 { animation-delay: 0.5s; }
+
+  /* ── MARQUEE ── */
+  .marquee-section {
+    overflow: hidden; border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 1.2rem 0; background: var(--cream);
+  }
+
+  .marquee-track {
+    display: flex; gap: 4rem;
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+  }
+
+  .marquee-item {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500;
+    display: flex; align-items: center; gap: 1rem;
+  }
+
+  .marquee-dot {
+    width: 4px; height: 4px; border-radius: 50%; background: var(--accent);
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* abstract decorative lines */
+  .deco-lines {
+    position: absolute; inset: 0; overflow: hidden;
+    pointer-events: none;
+  }
+  .deco-line {
+    position: absolute; background: rgba(255,255,255,0.04);
+  }
+
+  /* about visual art fill */
+  .about-art {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .about-art-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem; font-weight: 900; color: rgba(255,255,255,0.06);
+    text-align: center; line-height: 1; letter-spacing: -0.05em;
+    user-select: none;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 2rem; }
+    nav .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 50vh; }
+    .hero-left { padding: 4rem 2rem 3rem; }
+    section { padding: 5rem 2rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .services-header { grid-template-columns: 1fr; gap: 1rem; }
+    #about { grid-template-columns: 1fr; gap: 3rem; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    #contact { grid-template-columns: 1fr; }
+    .contact-left, .contact-right { padding: 4rem 2rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Chritian Rey Catz</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's Talk</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-tag fade-in">Available for projects · Philippines 🇵🇭</p>
+    <h1 class="hero-name fade-in delay-1">
+      Creative
+      <em>& Digital</em>
+      Professional
+    </h1>
+    <p class="hero-desc fade-in delay-2">
+      I help brands grow online — from stunning visuals and thriving communities to seamless scheduling and sales-driven ecommerce.
+    </p>
+    <div class="hero-actions fade-in delay-3">
+      <a href="#contact" class="btn-primary">Hire Me</a>
+      <a href="#services" class="btn-ghost">Explore Services →</a>
+    </div>
+    <div class="hero-stats fade-in delay-4">
+      <div>
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Clients Served</div>
+      </div>
+      <div>
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">5★</div>
+        <div class="stat-label">Avg. Rating</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="deco-lines">
+      <div class="deco-line" style="width:1px;top:0;bottom:0;left:25%;"></div>
+      <div class="deco-line" style="width:1px;top:0;bottom:0;left:50%;"></div>
+      <div class="deco-line" style="width:1px;top:0;bottom:0;left:75%;"></div>
+      <div class="deco-line" style="height:1px;left:0;right:0;top:33%;"></div>
+      <div class="deco-line" style="height:1px;left:0;right:0;top:66%;"></div>
+    </div>
+    <div class="hero-icon-grid">
+      <div class="hero-skill-cell">
+        <span class="hero-skill-icon">🎨</span>
+        <div class="hero-skill-name">Graphic Design</div>
+      </div>
+      <div class="hero-skill-cell">
+        <span class="hero-skill-icon">🛍️</span>
+        <div class="hero-skill-name">Ecommerce</div>
+      </div>
+      <div class="hero-skill-cell">
+        <span class="hero-skill-icon">📅</span>
+        <div class="hero-skill-name">Appointment Setting</div>
+      </div>
+      <div class="hero-skill-cell">
+        <span class="hero-skill-icon">📱</span>
+        <div class="hero-skill-name">Social Media</div>
+      </div>
+    </div>
+    <div style="position:absolute;bottom:2.5rem;left:0;right:0;text-align:center;">
+      <span style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.2);">Community Manager</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-dot"></span>Graphic Design</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Ecommerce Management</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Appointment Setting</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Social Media Management</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Community Management</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Brand Identity</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Content Creation</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Lead Generation</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Graphic Design</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Ecommerce Management</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Appointment Setting</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Social Media Management</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Community Management</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Brand Identity</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Content Creation</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>Lead Generation</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div>
+      <p class="section-tag">What I Do</p>
+      <h2 class="section-title">Five pillars.<br>One reliable pro.</h2>
+    </div>
+    <p class="section-sub">Whether you need a brand refresh, a fully managed online store, or a community that actually stays active — I deliver results with care and consistency.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <h3 class="service-title">Graphic Designer</h3>
+      <p class="service-desc">Visuals that stop the scroll. From logos and brand kits to social templates, ads, and print-ready materials that make your brand unforgettable.</p>
+      <div class="service-tags">
+        <span class="tag">Branding</span>
+        <span class="tag">Social Graphics</span>
+        <span class="tag">Print Design</span>
+        <span class="tag">Canva / PS</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <h3 class="service-title">Ecommerce</h3>
+      <p class="service-desc">End-to-end store management — product listings, SEO-optimized descriptions, order tracking, customer support, and conversion-focused store setups.</p>
+      <div class="service-tags">
+        <span class="tag">Shopify</span>
+        <span class="tag">Amazon</span>
+        <span class="tag">Etsy</span>
+        <span class="tag">Product SEO</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <h3 class="service-title">Appointment Setter</h3>
+      <p class="service-desc">I reach out, qualify leads, and fill your calendar with warm, ready-to-buy prospects — so you can focus on closing, not chasing.</p>
+      <div class="service-tags">
+        <span class="tag">Lead Outreach</span>
+        <span class="tag">CRM</span>
+        <span class="tag">Follow-ups</span>
+        <span class="tag">Calendly</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <h3 class="service-title">Social Media Manager</h3>
+      <p class="service-desc">Strategy, content calendars, scheduling, and analytics — across Instagram, Facebook, TikTok, LinkedIn, and more. Consistent posting that builds real audiences.</p>
+      <div class="service-tags">
+        <span class="tag">Instagram</span>
+        <span class="tag">TikTok</span>
+        <span class="tag">LinkedIn</span>
+        <span class="tag">Analytics</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <h3 class="service-title">Community Manager</h3>
+      <p class="service-desc">Building and nurturing online communities that stay engaged. Facebook Groups, Discord, Telegram — I moderate, create conversations, and turn members into loyal fans.</p>
+      <div class="service-tags">
+        <span class="tag">Facebook Groups</span>
+        <span class="tag">Discord</span>
+        <span class="tag">Engagement</span>
+        <span class="tag">Moderation</span>
+      </div>
+    </div>
+
+    <div class="service-card" style="background: var(--accent); cursor: pointer;" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      <div class="service-num" style="color: rgba(255,255,255,0.15);">→</div>
+      <h3 class="service-title" style="color: #fff; font-size: 1.3rem; margin-top: 0.5rem;">Ready to work<br>together?</h3>
+      <p class="service-desc" style="color: rgba(255,255,255,0.75); margin-top: 1rem;">Click to reach out and let's build something great.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-visual">
+    <div class="about-photo-frame">
+      <div class="about-art">
+        <div class="about-art-text">C R C</div>//////////
+	<img src="Christian Rey.png" width="500">
+      </div>
+      <div class="about-photo-overlay"></div>
+    </div>
+    <div class="about-badge">
+      <div class="about-badge-num">5★</div>
+      <div class="about-badge-text">Client Rating</div>
+    </div>
+  </div>
+
+  <div class="about-content">
+    <p class="section-tag">About Me</p>
+    <h2 class="section-title">The person behind the work</h2>
+    <p class="section-sub" style="margin-bottom:1rem;">
+      I'm a multi-skilled digital professional based in the Philippines with a passion for helping businesses grow their online presence and turn ideas into results. I thrive at the intersection of creativity and strategy.
+    </p>
+
+    <ul class="about-list">
+      <li>Fluent in English — clear, professional communication</li>
+      <li>Remote-ready with reliable internet and tools</li>
+      <li>Fast turnaround times and deadline-driven work ethic</li>
+      <li>Proactive, self-managed, and detail-oriented</li>
+      <li>Experienced across multiple industries & niches</li>
+    </ul>
+
+    <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:1rem;">Get in Touch</a>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div style="max-width:600px;">
+    <p class="section-tag">How I Work</p>
+    <h2 class="section-title">Simple process,<br>exceptional results.</h2>
+    <p class="section-sub">No guesswork, no chasing updates. Every project follows a clear, collaborative workflow from start to finish.</p>
+  </div>
+
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-dot"></div>
+      <h3 class="step-title">Discovery Call</h3>
+      <p class="step-desc">We align on your goals, audience, and what success looks like for your brand or project.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-dot"></div>
+      <h3 class="step-title">Strategy & Plan</h3>
+      <p class="step-desc">I put together a tailored action plan — timelines, deliverables, and tools — made specifically for you.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-dot"></div>
+      <h3 class="step-title">Execution</h3>
+      <p class="step-desc">I get to work with focused effort and regular check-ins to keep you in the loop every step of the way.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-dot" style="background: var(--gold);"></div>
+      <h3 class="step-title">Review & Scale</h3>
+      <p class="step-desc">We review performance together and refine the approach to maximize ongoing results and growth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <p class="section-tag">Client Reviews</p>
+  <h2 class="section-title">What clients say</h2>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">The graphics Christian created for our product launch were incredible. Our engagement doubled in the first week. Highly professional and met every deadline.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:#FAEEDA;color:#633806;">JM</div>
+        <div>
+          <div class="author-name">Jamie Morales</div>
+          <div class="author-role">Founder, SunShop PH</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">My Shopify store went from a mess to a machine. Product listings, customer messages, even the store layout — all handled perfectly. Sales are up 40%.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:#E1F5EE;color:#085041;">SK</div>
+        <div>
+          <div class="author-name">Sarah Kim</div>
+          <div class="author-role">Ecommerce Seller</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <p class="testimonial-text">Christian filled my coaching calendar within 2 weeks of starting as my appointment setter. Warm leads, great communication, zero ghosting. Absolute gem.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background:#EEEDFE;color:#26215C;">DR</div>
+        <div>
+          <div class="author-name">David Reyes</div>
+          <div class="author-role">Business Coach</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left">
+    <p class="section-tag">Let's Connect</p>
+    <h2 class="section-title">Start something great together</h2>
+    <p style="color:rgba(245,240,232,0.55);font-size:0.92rem;line-height:1.8;">I'm open to freelance projects, long-term partnerships, and retainers. Let me know what you need — I'll get back to you within 24 hours.</p>
+
+    <div class="contact-info">
+      <a href="mailto:christianreycatangcatang22gmail.com" class="contact-line">
+        <span class="contact-line-icon">✉</span>
+        christianreycatangcatang22gmail.com
+      </a>
+      <a href="https://wa.me/63XXXXXXXXXX" class="contact-line">
+        <span class="contact-line-icon">💬</span>
+        WhatsApp / Viber
+      </a>
+      <a href="#" class="contact-line">
+        <span class="contact-line-icon">💼</span>
+        Upwork Profile
+      </a>
+      <a href="#" class="contact-line">
+        <span class="contact-line-icon">📸</span>
+        Instagram Portfolio
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-right">
+    <p class="section-tag">Send a Message</p>
+    <h2 class="section-title" style="font-size:1.8rem;margin-bottom:2rem;">Tell me about your project</h2>
+
+    <div class="form-group">
+      <label class="form-label">Your Name</label>
+      <input class="form-input" type="text" placeholder="e.g. Maria Santos">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Email Address</label>
+      <input class="form-input" type="email" placeholder="you@example.com">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Service Needed</label>
+      <select class="form-input" style="cursor:pointer;">
+        <option value="">Select a service...</option>
+        <option>Graphic Design</option>
+        <option>Ecommerce Management</option>
+        <option>Appointment Setting</option>
+        <option>Social Media Management</option>
+        <option>Community Management</option>
+        <option>Multiple Services</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Message</label>
+      <textarea class="form-textarea" placeholder="Tell me about your project, goals, and timeline..."></textarea>
+    </div>
+    <button class="btn-primary" style="width:100%;text-align:center;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;">Send Message</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Christian Rey Catz</a>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <span>© 2026 Christian Rey Catz. All rights reserved.</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .process-step, .testimonial-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  document.querySelector('button.btn-primary').addEventListener('click', function() {
+    this.textContent = '✓ Message Sent!';
+    this.style.background = '#4A6741';
+    setTimeout(() => {
+      this.textContent = 'Send Message';
+      this.style.background = '';
+    }, 3000);
+  });
+</script>
+</body>
+</html>
