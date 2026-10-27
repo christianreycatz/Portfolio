@@ -423,17 +423,18 @@ footer .wrap{display:flex; justify-content:space-between; gap:12px; flex-wrap:wr
 #intro::before{content:""; position:absolute; inset:0; background:repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 4px); pointer-events:none}
 :root[data-mode="day"] .hero h1{text-shadow:none}
 :root[data-mode="day"] .hero::before{opacity:.45}
-#intro{animation:introIn 1.1s ease both}
+#intro{animation:introIn 1.1s ease backwards}
 @keyframes introIn{from{opacity:0}to{opacity:1}}
-#intro .in-top{animation:fadeUp .9s .35s ease both}
-#intro .role{animation:fadeUp .9s ease both}
+#intro .in-top{animation:fadeUp .9s .35s ease backwards}
+#intro .role{animation:fadeUp .9s ease backwards}
 #intro .r1{animation-delay:.75s} #intro .r2{animation-delay:.6s} #intro .r3{animation-delay:.6s} #intro .r4{animation-delay:.75s}
-#intro .hero-wrap{animation:heroIn 1.2s .45s cubic-bezier(.2,.8,.2,1) both}
-#intro .in-foot{animation:fadeUp .9s 1s ease both}
-#intro .in-skip{animation:fadeUp .6s 1.2s ease both}
+#intro .hero-wrap{animation:heroIn 1.2s .45s cubic-bezier(.2,.8,.2,1) backwards}
+#intro .in-foot{animation:fadeUp .9s 1s ease backwards}
+#intro .in-skip{animation:fadeUp .6s 1.2s ease backwards}
 @keyframes fadeUp{from{opacity:0; transform:translateY(14px)}to{opacity:1; transform:none}}
 @keyframes heroIn{from{opacity:0; transform:scale(.92); filter:blur(6px)}to{opacity:1; transform:none; filter:none}}
-#intro.out{opacity:0; transition:opacity 1.1s ease}
+#intro.picked .in-top, #intro.picked .role, #intro.picked .hero-wrap, #intro.picked .in-foot, #intro.out .in-skip{animation:none}
+#intro.out{animation:none; opacity:0; transition:opacity 1.1s ease}
 .intro-on header.nav, .intro-on main, .intro-on footer{opacity:0}
 header.nav, main, footer{transition:opacity 1.2s ease}
 .in-top{display:grid; justify-items:center; gap:6px; text-align:center; z-index:2}
