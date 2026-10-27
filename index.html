@@ -450,7 +450,7 @@ header.nav, main, footer{transition:opacity 1.2s ease}
 /* ===== Ambient background: drifting smoke glows + rising embers ===== */
 .ambient{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
 main, footer{position:relative; z-index:1}
-.ambient .glow{position:absolute; border-radius:50%; opacity:var(--go,.55); will-change:transform}
+.ambient .glow{position:absolute; border-radius:50%; opacity:var(--go,.85); will-change:transform}
 .ambient .g1{width:58vmax; height:58vmax; left:-18vmax; top:-14vmax; background:radial-gradient(circle, color-mix(in srgb, var(--accent) 34%, transparent), transparent 65%); animation:drift1 38s ease-in-out infinite alternate}
 .ambient .g2{width:52vmax; height:52vmax; right:-20vmax; top:30vh; background:radial-gradient(circle, color-mix(in srgb, var(--cyan) 26%, transparent), transparent 65%); animation:drift2 46s ease-in-out infinite alternate}
 .ambient .g3{width:46vmax; height:46vmax; left:20vw; bottom:-26vmax; background:radial-gradient(circle, color-mix(in srgb, var(--blood) 40%, transparent), transparent 65%); animation:drift3 52s ease-in-out infinite alternate}
@@ -458,8 +458,8 @@ main, footer{position:relative; z-index:1}
 @keyframes drift2{to{transform:translate(-16vw, -20vh) scale(.9)}}
 @keyframes drift3{to{transform:translate(14vw, -12vh) scale(1.1)}}
 #embers{position:absolute; inset:0; width:100%; height:100%}
-:root[data-mode="day"] .ambient{--go:.38}
-:root[data-mode="day"] #embers{opacity:.55}
+:root[data-mode="day"] .ambient{--go:.55}
+:root[data-mode="day"] #embers{opacity:.7}
 @media (prefers-reduced-motion: reduce){ .ambient .glow{animation:none} #embers{display:none} }
 .in-top{display:grid; justify-items:center; gap:6px; text-align:center; z-index:2}
 .in-top small{font:600 11px var(--f-mono); letter-spacing:.3em; text-transform:uppercase; color:var(--muted)}
@@ -1278,12 +1278,14 @@ main, footer{position:relative; z-index:1}
     sprites.red = sprite(day ? 'rgba(179,38,26,1)' : 'rgba(226,72,54,1)');
     sprites.gold = sprite(day ? 'rgba(148,99,24,1)' : 'rgba(242,203,120,1)');
   }
-  function count(){ return Math.round(Math.min(90, Math.max(28, (W * H) / 16000))); }
+  function count(){ return Math.round(Math.min(140, Math.max(40, (W * H) / 13000))); }
   function spawn(p, anywhere){
     p.x = Math.random() * W;
     p.y = anywhere ? Math.random() * H : H + 20 + Math.random() * 60;
     p.vy = -(0.25 + Math.random() * 0.75);
-    p.size = 4 + Math.random() * 10;
+    p.big = Math.random() < .12;
+    p.size = p.big ? 26 + Math.random() * 30 : 6 + Math.random() * 14;
+    if(p.big) p.vy *= .5;
     p.phase = Math.random() * Math.PI * 2;
     p.sway = 0.3 + Math.random() * 0.8;
     p.life = 0; p.max = 9 + Math.random() * 12;
@@ -1316,7 +1318,7 @@ main, footer{position:relative; z-index:1}
       var fade = Math.min(1, p.life / 1.5) * Math.min(1, (p.max - p.life) / 2.5);
       var a = fade * (0.55 + 0.45 * Math.sin(p.tw));
       if(a <= 0.01) continue;
-      ctx.globalAlpha = a * 0.85;
+      ctx.globalAlpha = p.big ? a * 0.35 : Math.min(1, a * 1.15);
       ctx.drawImage(sprites[p.kind], p.x - p.size/2, p.y - p.size/2, p.size, p.size);
     }
     ctx.globalAlpha = 1;
